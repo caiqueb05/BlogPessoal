@@ -9,6 +9,13 @@ import java.util.List;
 @Repository
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 
+    /**
+     * Metodo utilizado para realizar pesquisa pela coluna titulo da tabela postagem
+     * @param titulo
+     * @return
+     * @since 1.0
+     * @author Caique
+     */
     public List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);
 
     public List<Postagem> findById(long id);
