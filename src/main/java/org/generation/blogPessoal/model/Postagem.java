@@ -8,7 +8,7 @@ import java.util.Date;
 /*import javax.validation.constraints.Size;*/
 
 @Entity
-@Table(name = "postagem")
+@Table(name = "tb_postagem")
 public class Postagem {
 
     @Id
@@ -28,6 +28,7 @@ public class Postagem {
 
     @ManyToOne
     @JsonIgnoreProperties("postagem")
+
     private Tema tema;
 
     public Tema getTema() {
