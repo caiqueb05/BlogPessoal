@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 @Service
@@ -34,7 +33,7 @@ public class UsuarioService {
 
         if(usuario.isPresent()){
             if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
-                String auth = user.get().getSenha() + ":" + usuario.get().getSenha();
+                String auth = user.get().getUsuario() + ":" + user.get().getSenha();
                 byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
                 String authHeader = "Basic " + new String(encodeAuth);
 
