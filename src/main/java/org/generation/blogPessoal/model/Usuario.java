@@ -1,8 +1,12 @@
 package org.generation.blogPessoal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -29,6 +33,18 @@ public class Usuario {
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("tema")
+    private List<Postagem> postagem = new ArrayList<>();
+
+    public List<Postagem> getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(List<Postagem> postagem) {
+        this.postagem = postagem;
     }
 
     public Usuario() { }
