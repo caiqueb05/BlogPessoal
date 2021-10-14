@@ -17,7 +17,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
-    public Usuario CadastrarUsuario(Usuario usuario) {
+    /*public Usuario CadastrarUsuario(Usuario usuario) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         String senhaEncoder = encoder.encode(usuario.getSenha());
@@ -25,11 +25,22 @@ public class UsuarioService {
 
         return repository.save(usuario);
 
+    }*/
+
+    public Optional<Object> CadastrarUsuario(Usuario usuarioParaCadastrar) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return repository.findByEmail(usuarioParaCadastrar.getEmail()).map(usuarioExistente -> {
+            return Optional.empty();
+        }).orElseGet(() -> {
+            usuarioParaCadastrar.setSenha(encoder.encode(usuarioParaCadastrar.getSenha()));
+            return Optional.ofNullable(repository.save(usuarioParaCadastrar));
+        });
+
     }
 
     public Optional<UserLogin> Logar(Optional<UserLogin> user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Optional<Usuario> usuario = repository.findByUsuario(user.get().getUsuario());
+        Optional<Usuario> usuario = repository.findByEmail(user.get().getEmail());
 
         if(usuario.isPresent()){
             if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {

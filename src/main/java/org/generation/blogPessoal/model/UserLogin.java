@@ -6,6 +6,8 @@ public class UserLogin {
 
     private String usuario;
 
+    private String email;
+
     private String senha;
 
     private String token;
@@ -24,6 +26,14 @@ public class UserLogin {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {

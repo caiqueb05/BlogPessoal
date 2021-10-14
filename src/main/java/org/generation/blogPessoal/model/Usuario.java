@@ -26,6 +26,10 @@ public class Usuario {
 
     @NotBlank
     @Size(min = 5, max = 100)
+    private String email;
+
+    @NotBlank
+    @Size(min = 5, max = 100)
     private String senha;
 
     public Usuario(Long id, String nome, String usuario, String senha) {
@@ -45,6 +49,14 @@ public class Usuario {
 
     public void setPostagem(List<Postagem> postagem) {
         this.postagem = postagem;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Usuario() { }
