@@ -2,6 +2,7 @@ package org.generation.blogPessoal.controller;
 
 import org.generation.blogPessoal.model.UserLogin;
 import org.generation.blogPessoal.model.Usuario;
+import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.generation.blogPessoal.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
-    /*@Autowired
-    private Usuario repositorio;*/
+    @Autowired
+    private UsuarioRepository repositorio;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -46,7 +47,7 @@ public class UsuarioController {
 
     }
 
-    /*@GetMapping("/todos")
+    @GetMapping("/todos")
     public ResponseEntity<List<Usuario>> getAll(){
         if(repositorio.findAll().isEmpty()) {
             return ResponseEntity.status(204).build();
@@ -54,7 +55,7 @@ public class UsuarioController {
         else {
             return ResponseEntity.status(200).body(repositorio.findAll());
         }
-    }*/
+    }
 
 
 }

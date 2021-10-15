@@ -1,9 +1,12 @@
 package org.generation.blogPessoal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,9 @@ public class Usuario {
     @Size(min = 5, max = 100)
     private String usuario;
 
-    @NotBlank
+    @ApiModelProperty(example = "email@email.com.br")
+    @NotNull(message = "O atributo Usuário é Obrigatório!")
+    @Email(message = "O atributo Usuário deve ser um email válido!")
     @Size(min = 5, max = 100)
     private String email;
 
@@ -32,34 +37,26 @@ public class Usuario {
     @Size(min = 5, max = 100)
     private String senha;
 
-    public Usuario(Long id, String nome, String usuario, String senha) {
-        this.id = id;
-        this.nome = nome;
-        this.usuario = usuario;
-        this.senha = senha;
-    }
-
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("tema")
     private List<Postagem> postagem = new ArrayList<>();
 
-    public List<Postagem> getPostagem() {
-        return postagem;
-    }
-
-    public void setPostagem(List<Postagem> postagem) {
-        this.postagem = postagem;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public Usuario(Long id, String nome, String usuario, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
         this.email = email;
+        this.senha = senha;
     }
 
-    public Usuario() { }
+    public Usuario(String nome, String usuario, String email, String senha) {
+        this.nome = nome;
+        this.usuario = usuario;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario () {}
 
     public Long getId() {
         return id;
@@ -85,11 +82,27 @@ public class Usuario {
         this.usuario = usuario;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Postagem> getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(List<Postagem> postagem) {
+        this.postagem = postagem;
     }
 }

@@ -17,7 +17,7 @@ public class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @BeforeAll
+    /*@BeforeAll
     void start() {
         Usuario usuario = new Usuario(0L, "Caique Bezerra", "caique.bezerra@mail.com", "1234567890");
 
@@ -38,7 +38,7 @@ public class UsuarioRepositoryTest {
 
         if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
             usuarioRepository.save(usuario);
-    }
+    }*/
 
     @Test
     @DisplayName("Retorna Nome")

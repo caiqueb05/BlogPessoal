@@ -28,19 +28,19 @@ public class UsuarioControllerTest {
     private Usuario usuarioUpdate;
     private Usuario usuarioAdmin;
 
-    @BeforeAll
+    @BeforeEach
     public void start() {
 
-        Usuario usuario = new Usuario(0L, "Administrador", "admin@mail.com", "1234567890");
+        /*usuario = new Usuario("Administrador", "admin", "admin@mail.com", "1234567890");
 
-        if(!usuarioRepository.findByUsuario(usuarioAdmin.getUsuario()).isPresent()) {
-            HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuarioAdmin);
+        if(!usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
+            HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuario);
             testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
-        }
+        }*/
 
-        usuario = new Usuario(0L, "Manoel Bezerra", "manoel.bezerra@mail.com", "1234567890");
+        usuarioAdmin = new Usuario("Manoel Bezerra", "manoelteste", "manoel.bezerra@mail.com", "1234567890");
 
-        usuario = new Usuario(2L, "Paulo Antunes", "paulo.bezerra@mail.com", "1234567890");
+        usuarioUpdate = new Usuario(2L, "Paulo Antunes", "paulo", "paulo.bezerra@mail.com", "1234567890");
 
     }
 
@@ -49,13 +49,14 @@ public class UsuarioControllerTest {
     @Order(1)
     public void deveRealizarPostUsuario() {
 
-        HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuario);
+        HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuarioAdmin);
         ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
         assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
 
     }
 
-    /*@Test
+    @Disabled
+    @Test
     @DisplayName("Listar todos os  Usuário!")
     @Order(2)
     public void deveRealizarGetAllUsuario() {
@@ -63,9 +64,10 @@ public class UsuarioControllerTest {
         ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("admin@mail.com", "1234567890").exchange("/usuarios/all", HttpMethod.GET, null, String.class);
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
 
-    }*/
+    }
 
-    /*@Test
+    @Disabled
+    @Test
     @DisplayName("Alterar Usuário!")
     @Order(3)
     public void deveRealizarPutUsuario() {
@@ -74,6 +76,6 @@ public class UsuarioControllerTest {
         ResponseEntity<Usuario> resposta = testRestTemplate.withBasicAuth("admin@mail.com", "1234567890").exchange("/usuarios/alterar", HttpMethod.PUT, request, Usuario.class);
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
 
-    }*/
+    }
 
 }

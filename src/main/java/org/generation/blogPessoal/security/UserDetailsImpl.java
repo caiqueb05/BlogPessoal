@@ -1,4 +1,4 @@
-package org.generation.blogPessoal.seguranca;
+package org.generation.blogPessoal.security;
 
 import org.generation.blogPessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,12 +11,12 @@ public class UserDetailsImpl implements UserDetails {
 
     private static final Long serialVersionUID = 1L;
 
-    private String userName;
+    private String email;
     private String password;
     private List<GrantedAuthority> autorizacoes;
 
     public UserDetailsImpl(Usuario user) {
-        this.userName = user.getUsuario();
+        this.email = user.getEmail();
         this.password = user.getSenha();
     }
 
@@ -34,7 +34,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return email;
     }
 
     @Override
