@@ -28,7 +28,7 @@ public class Usuario {
     private String usuario;
 
     @ApiModelProperty(example = "email@email.com.br")
-    @NotNull(message = "O atributo Usuário é Obrigatório!")
+    @NotBlank(message = "O atributo Usuário é Obrigatório!")
     @Email(message = "O atributo Usuário deve ser um email válido!")
     @Size(min = 5, max = 100)
     private String email;
@@ -38,7 +38,8 @@ public class Usuario {
     private String senha;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("tema")
+    @JsonIgnoreProperties("usuario")
+    @ApiModelProperty(hidden = true)
     private List<Postagem> postagem = new ArrayList<>();
 
     public Usuario(Long id, String nome, String usuario, String email, String senha) {

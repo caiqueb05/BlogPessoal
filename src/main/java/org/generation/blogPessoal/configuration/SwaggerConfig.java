@@ -27,11 +27,11 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metadata())
-                .useDefaultResponseMessages(false)
-                .globalResponses(HttpMethod.GET, responseMessage())
+                .useDefaultResponseMessages(false);
+                /*.globalResponses(HttpMethod.GET, responseMessage())
                 .globalResponses(HttpMethod.POST, responseMessage())
                 .globalResponses(HttpMethod.PUT, responseMessage())
-                .globalResponses(HttpMethod.DELETE, responseMessage());
+                .globalResponses(HttpMethod.DELETE, responseMessage());*/
     }
     public static ApiInfo metadata() {
         return new ApiInfoBuilder()
@@ -46,7 +46,7 @@ public class SwaggerConfig {
         return new Contact("Caique Bezerra","https://github.com/caiqueb05/BlogPessoal",
                 "caique.bezerra@gmail.com");
     }
-    private static List<Response> responseMessage() {
+    /*private static List<Response> responseMessage() {
         return new ArrayList<Response>() {
             private static final long serialVersionUID = 1L;
             {
@@ -59,5 +59,5 @@ public class SwaggerConfig {
                 add(new ResponseBuilder().code("500").description("Erro!").build());
             }
         };
-    }
+    }*/
 }
