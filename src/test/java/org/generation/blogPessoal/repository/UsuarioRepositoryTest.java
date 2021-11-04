@@ -17,28 +17,28 @@ public class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    /*@BeforeAll
+    @BeforeEach
     void start() {
-        Usuario usuario = new Usuario(0L, "Caique Bezerra", "caique.bezerra@mail.com", "1234567890");
+        Usuario usuario = new Usuario("Caique", "Caique Bezerra", "caique.bezerra@mail.com", "1234567890");
 
-        if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
+        if(!usuarioRepository.findByEmail(usuario.getEmail()).isPresent())
             usuarioRepository.save(usuario);
 
-        usuario = new Usuario(0L, "Manoel Bezerra", "manoel.bezerra@mail.com", "1234567890");
+        Usuario usuario1 = new Usuario("Manoel", "Manoel Bezerra", "manoel.bezerra@mail.com", "1234567890");
 
-        if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
-            usuarioRepository.save(usuario);
+        if(!usuarioRepository.findByEmail(usuario1.getEmail()).isPresent())
+            usuarioRepository.save(usuario1);
 
-        usuario = new Usuario(0L, "Frederico Bezerra", "frederico.bezerra@mail.com", "1234567890");
+        Usuario usuario2 = new Usuario("Frederico", "Frederico Bezerra", "frederico.bezerra@mail.com", "1234567890");
 
-        if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
-            usuarioRepository.save(usuario);
+        if(!usuarioRepository.findByEmail(usuario2.getEmail()).isPresent())
+            usuarioRepository.save(usuario2);
 
-        usuario = new Usuario(0L, "Paulo Antunes", "paulo.bezerra@mail.com", "1234567890");
+        Usuario usuario3 = new Usuario("Paulo", "Paulo Antunes", "paulo.bezerra@mail.com", "1234567890");
 
-        if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
-            usuarioRepository.save(usuario);
-    }*/
+        if(!usuarioRepository.findByEmail(usuario3.getEmail()).isPresent())
+            usuarioRepository.save(usuario3);
+    }
 
     @Test
     @DisplayName("Retorna Nome")
