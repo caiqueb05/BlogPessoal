@@ -27,11 +27,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metadata())
-                .useDefaultResponseMessages(false)
-                .globalResponses(HttpMethod.GET, responseMessage())
-                .globalResponses(HttpMethod.POST, responseMessage())
-                .globalResponses(HttpMethod.PUT, responseMessage())
-                .globalResponses(HttpMethod.DELETE, responseMessage());
+                .useDefaultResponseMessages(false);
     }
     public static ApiInfo metadata() {
         return new ApiInfoBuilder()
