@@ -46,6 +46,8 @@ public class SwaggerConfig {
         return new Contact("Caique Bezerra","https://github.com/caiqueb05/BlogPessoal",
                 "caique.bezerra@gmail.com");
     }
+
+    @SuppressWarnings("unused")
     private static List<Response> responseMessage() {
         return new ArrayList<Response>() {
             private static final long serialVersionUID = 1L;
