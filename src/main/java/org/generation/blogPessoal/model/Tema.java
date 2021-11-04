@@ -1,6 +1,7 @@
 package org.generation.blogPessoal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,6 +20,7 @@ public class Tema {
 
     @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("tema")
+    @ApiModelProperty(hidden = true)
     private List<Postagem> postagem;
 
     public long getId() {

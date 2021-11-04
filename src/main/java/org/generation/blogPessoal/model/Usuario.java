@@ -38,7 +38,8 @@ public class Usuario {
     private String senha;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("tema")
+    @JsonIgnoreProperties("usuario")
+    @ApiModelProperty(hidden = true)
     private List<Postagem> postagem = new ArrayList<>();
 
     public Usuario(Long id, String nome, String usuario, String email, String senha) {
