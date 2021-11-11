@@ -68,5 +68,20 @@ public class UsuarioController {
         }
     }
 
+    @ApiOperation(value = "Busca usuario por Id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retorna usuario existente ou inexistente"),
+            @ApiResponse(code = 400, message = "Retorno inexistente")
+    })
+    @GetMapping("/{id_usuario}")
+    public ResponseEntity<Usuario> buscarPorId(@PathVariable(value = "id_usuario") Long idUsuario) {
+        return repositorio.findById(idUsuario).map(resp -> ResponseEntity.status(200).body(resp))
+                .orElseThrow(() -> {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                            "ID inexistente, passe um ID valido para pesquisa!.");
+                });
+
+    }
+
 
 }
